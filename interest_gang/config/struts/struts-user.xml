@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<package name="user" namespace="/user" extends="common">
+<action name="useraction_*" class="com.xqbang.web.action.Useraction" method="{1}">
+<result name="home">/index.jsp</result>
+<result name="register">/register.jsp</result>
+<result name="activesuccess">/WEB-INF/pages/user/activesuccess.jsp</result>
+<result name="collectlist">/WEB-INF/pages/user/collectlist.jsp</result>
+<result name="myfootmark">/myfootmark.jsp</result>
+<result name="orderlist">/WEB-INF/pages/user/orderlist.jsp</result>
+<result name="accountinfo" type="redirectAction">uiaction_user_account_manage</result>
+<result name="commentlist">/WEB-INF/pages/user/commentlist.jsp</result>
+<result name="registersuccess">/regissuccess.jsp</result>
+<result name="reqfindpwd">/reqfindpwd.jsp</result>
+<result name="reqfindpwdsuccess">/reqfindpwdsuccess.jsp</result>
+<result name="resetpwdsuccess">/resetpwdsuccess.jsp</result>
+</action>
+</package>
+</struts>

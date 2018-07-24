@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xqbang.domain">
+<class name="Order" table="t_order">
+<id name="orderid">
+<generator class="assigned"></generator>
+</id>
+<property name="totalprice"></property>
+<property name="receivername"></property>
+<property name="receiverphone"></property>
+<property name="paystate">
+<column name="paystate" not-null="true" default="0"></column>
+</property>
+<property name="cmstate">
+<column name="cmstate" not-null="true" default="0"></column>
+</property>
+<property name="ordertime" type="timestamp" insert="false" update="false">
+<column name="ordertime" not-null="true" default="CURRENT_TIMESTAMP" sql-type="timestamp"></column>
+</property>
+<many-to-one name="user" class="com.xqbang.domain.User" column="userid"></many-to-one>
+<set name="orderitems" cascade="save-update,delete" inverse="true" lazy="false"><!-- 查订单的同时查出订单项，lazy为false -->
+<key column="orderid"></key>
+<one-to-many class="Orderitem"/>
+</set>
+</class>
+<query name="order.modifycmstate">
+    	UPDATE Order SET cmstate = 1 WHERE orderid = ?
+</query>
+<query name="order.updatepaystate">
+    	UPDATE Order SET paystate = ? WHERE orderid = ?
+</query>
+
+</hibernate-mapping>

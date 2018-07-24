@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xqbang.domain">
+<class name="User" table="t_user">
+<id name="userid">
+<generator class="native"></generator>
+</id>
+<property name="username" unique="true"></property>
+<property name="password"></property>
+<property name="gender"></property>
+<property name="telephone"></property>
+<property name="email"></property>
+<property name="address"></property>
+<property name="activecode"></property>
+<property name="role"></property>
+<property name="state">
+<column name="state" not-null="true" default="0"></column>
+</property>
+<property name="register_time" type="timestamp" insert="false" update="false">
+<column name="register_time" not-null="true" default="CURRENT_TIMESTAMP" sql-type="timestamp"></column>
+</property>
+<set name="orders"><!-- 用户订单 -->
+<key column="userid"></key>
+<one-to-many class="Order"/>
+</set>
+<set name="courses" table="t_collect" inverse="true"><!-- 用户收藏 -->
+<key column="userid"></key>
+<many-to-many column="courseid" class="Course"></many-to-many>
+</set>
+<set name="comments"><!-- 用户评价 -->
+<key column="userid"></key>
+<one-to-many class="Comment"/>
+</set>
+</class>
+<query name="user.updateinfo">
+update User set gender=?,telephone=?,email=?,address=? where userid=?
+</query>
+<query name="user.updatepwd">
+update User set password=? where userid=?
+</query>
+</hibernate-mapping>

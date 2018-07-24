@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<!-- 设置常量 -->
+<constant name="struts.devMode" value="true"></constant>
+<constant name="struts.ui.theme" value="simple"></constant>
+<!-- 通用包 -->
+<package name="common" namespace="/" extends="struts-default">
+<!-- 配置验证码的结果类型 -->
+<result-types>
+<result-type name="captcha" class="com.xqbang.utils.CaptchaResult"></result-type>
+</result-types>
+<!-- 配置拦截器 -->
+<interceptors>
+<interceptor name="logininterceptor" class="com.xqbang.web.interceptor.UserLoginInterceptor"></interceptor>
+<interceptor-stack name="mydefaultstack">
+<interceptor-ref name="defaultStack"></interceptor-ref>
+<interceptor-ref name="logininterceptor"></interceptor-ref>
+</interceptor-stack>
+</interceptors>
+<default-interceptor-ref name="mydefaultstack"></default-interceptor-ref>
+
+<!-- 配置全局结果视图 -->
+<global-results>
+<result name="login">/login.jsp</result>
+<result name="sjlogin">/merchantlogin.jsp</result>
+</global-results>
+<!-- 配置统一的UI访问的action -->
+<action name="uiaction_*_*">
+<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+</action>
+<!-- 验证码的action -->
+<action name="codeaction">
+<result type="captcha">
+<param name="width">166</param>
+<param name="height">33</param>
+</result>
+</action>
+
+</package>
+<!-- 加载其他配置文件 -->
+<include file="struts/struts-user.xml"></include>
+<include file="struts/struts-course.xml"></include>
+<include file="struts/struts-comment.xml"></include>
+<include file="struts/struts-merchant.xml"></include>
+<include file="struts/struts-order.xml"></include>
+</struts>

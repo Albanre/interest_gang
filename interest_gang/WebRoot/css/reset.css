@@ -1,0 +1,44 @@
+﻿@charset "utf-8";
+/* CSS Document */
+html{color:#000;background:#FFF;}  
+body{font-size:12px;text-align:center}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{
+	margin:0 auto;padding:0;
+} 
+/*table{border-collapse:collapse;border-spacing:0;} */
+fieldset,img{border:0}
+em{ font-style:normal;}
+b,strong{ font-weight:bold;}
+li{list-style:none;}
+address,caption,cite,code,dfn,em,th,var,optgroup{font-style:inherit;font-weight:inherit}  
+del,ins{text-decoration:none}  
+caption,th{text-align:left}  
+h1,h2,h3,h4,h5,h6{font-size:100%}  
+q:before,q:after{content:''}
+abbr,acronym{border:0;font-variant:normal}  
+sup{vertical-align:baseline}  
+sub{vertical-align:baseline}  
+legend{color:#000}  
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit}  
+input,button,textarea,select{font-size:100%}  
+  
+.ie7 input, .ie7 select{line-height:18px}  
+a {cursor:pointer;text-decoration: none;} 
+.clearfix:before,  
+.clearfix:after {  
+    content: ".";  
+    display: block;  
+    height: 0;  
+    overflow: hidden  
+}  
+.clearfix:after {clear: both}  
+.clearfix {zoom: 1} 
+.clear{clear:both;}
+/* 默认链接
+ ******************************** */  
+a, a:active, a:visited {  
+    color:#000;  
+    text-decoration:none;  
+    outline: medium none;
+}  
+a:hover {text-decoration:underline;} 

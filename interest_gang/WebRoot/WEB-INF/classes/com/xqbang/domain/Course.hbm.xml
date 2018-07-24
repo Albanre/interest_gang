@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xqbang.domain">
+<class name="Course" table="t_course">
+<id name="courseid">
+<generator class="assigned"></generator>
+</id>
+<property name="coursename"></property>
+<property name="p_number"></property>
+<property name="o_time" type="date"></property>
+<property name="price"></property>
+<property name="coursetype"></property>
+<property name="introduction"></property>
+<property name="img_url"></property>
+<many-to-one name="merchant" class="com.xqbang.domain.Merchant" column="merchantid" lazy="false"></many-to-one>
+<set name="users" table="t_collect" inverse="false"  cascade="save-update">
+<key column="courseid"></key>
+<many-to-many class="User" column="userid"></many-to-many>
+</set>
+<set name="comments">
+<key column="courseid"></key>
+<one-to-many class="com.xqbang.domain.Comment"/>
+</set>
+</class>
+<query name="course.addpnum">
+update Course set p_number=p_number+? where courseid=?
+</query>
+<query name="course.jianpnum">
+update Course set p_number=p_number-? where courseid=?
+</query>
+</hibernate-mapping>

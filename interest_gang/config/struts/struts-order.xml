@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<package name="order" namespace="/order" extends="common">
+<action name="orderaction_*" class="com.xqbang.web.action.Orderaction" method="{1}">
+<result name="topay">/WEB-INF/pages/user/order_pay.jsp</result>
+<result name="paysuccess">/WEB-INF/pages/user/paysuccess.jsp</result>
+<result name="orderinfo">/WEB-INF/pages/user/orderinfo.jsp</result>
+<result name="tocomment">/WEB-INF/pages/user/editcomment.jsp</result>
+<result name="orderlist" type="redirectAction">
+<param name="namespace">/user</param>
+<param name="actionName">useraction_findorderbyuser</param>
+</result>
+</action>
+</package>
+</struts>

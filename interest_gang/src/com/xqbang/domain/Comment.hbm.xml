@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xqbang.domain">
+<class name="Comment" table="t_comment ">
+<id name="commentid">
+<generator class="native"></generator>
+</id>
+<property name="cm_content"></property>
+<property name="cm_time" type="timestamp" insert="false" update="false">
+<column name="cm_time" not-null="true" default="CURRENT_TIMESTAMP" sql-type="timestamp"></column>
+</property>
+<property name="score"></property>
+<many-to-one name="user" class="com.xqbang.domain.User" column="userid"></many-to-one>
+<many-to-one name="course" class="com.xqbang.domain.Course" column="courseid"></many-to-one>
+</class>
+</hibernate-mapping>

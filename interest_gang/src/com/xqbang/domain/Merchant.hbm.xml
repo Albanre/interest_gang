@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xqbang.domain">
+<class name="Merchant" table="t_merchant">
+<id name="merchantid">
+<generator class="native"></generator>
+</id>
+<property name="username"></property>
+<property name="password"></property>
+<property name="o_name"></property>
+<property name="telephone"></property>
+<property name="email"></property>
+<property name="createtime" type="date"></property>
+<property name="introduction"></property>
+<property name="address"></property>
+<property name="city"></property>
+<property name="state">
+<column name="state" not-null="true" default="0"></column>
+</property>
+<property name="register_time" type="timestamp" insert="false" update="false">
+<column name="register_time" not-null="true" default="CURRENT_TIMESTAMP" sql-type="timestamp"></column>
+</property>
+<set name="courses">
+<key column="merchantid"></key>
+<one-to-many class="com.xqbang.domain.Course"/>
+</set>
+</class>
+<query name="merchant.modifystate">
+update Merchant set state=? where merchantid=?
+</query>
+</hibernate-mapping>

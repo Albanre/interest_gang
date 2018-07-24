@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<package name="course" namespace="/course" extends="common">
+<action name="courseaction_*" class="com.xqbang.web.action.Courseaction" method="{1}">
+<result name="home">/index.jsp</result>
+<result name="register">/register.jsp</result>
+<result name="courselist">/courselist.jsp</result>
+<result name="courseinfo">/courseinfo.jsp</result>
+<result name="confirmorder">/WEB-INF/pages/user/confirm_order.jsp</result>
+<result name="addcartsuccess">/WEB-INF/pages/user/addcartsuccess.jsp</result>
+<result name="showcart">/WEB-INF/pages/user/cart.jsp</result>
+<result name="tocollectlist" type="redirectAction">
+<param name="namespace">/user</param>
+<param name="actionName">useraction_findcollectbyuser</param>
+</result>
+<result name="addsuccess">/WEB-INF/pages/merchant/addcoursesuccess.jsp</result>
+<result name="editcs">/WEB-INF/pages/merchant/editcourse.jsp</result>
+<result name="commentlist">/WEB-INF/pages/merchant/cscommentlist.jsp</result>
+</action>
+</package>
+</struts>
